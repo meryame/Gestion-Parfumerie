@@ -1,0 +1,15 @@
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\bin\Debug\net6.0\Projet-Gestion-Parfumerie.exe
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\bin\Debug\net6.0\Projet-Gestion-Parfumerie.deps.json
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\bin\Debug\net6.0\Projet-Gestion-Parfumerie.runtimeconfig.json
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\bin\Debug\net6.0\Projet-Gestion-Parfumerie.dll
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\bin\Debug\net6.0\ref\Projet-Gestion-Parfumerie.dll
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\bin\Debug\net6.0\Projet-Gestion-Parfumerie.pdb
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.AssemblyInfoInputs.cache
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.AssemblyInfo.cs
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.csproj.CoreCompileInputs.cache
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.dll
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\ref\Projet-Gestion-Parfumerie.dll
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.pdb
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.genruntimeconfig.cache
+C:\Users\pc\source\repos\Projet-Gestion-Parfumerie\Projet-Gestion-Parfumerie\obj\Debug\net6.0\Projet-Gestion-Parfumerie.csproj.AssemblyReference.cache
