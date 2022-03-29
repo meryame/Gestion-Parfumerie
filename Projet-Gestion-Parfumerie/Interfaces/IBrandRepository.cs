@@ -10,7 +10,7 @@ namespace Projet_Gestion_Parfumerie.Models
     {
         public void AddBrand(Brand brand);
         public List<Brand> GetAllBrands();
-        public Brand GetBrandById(int id);
+        public Brand GetBrandById(Guid id);
         public Brand GetBrandByName(string name);
     }
 }

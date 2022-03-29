@@ -8,11 +8,11 @@ namespace Projet_Gestion_Parfumerie.Models
 {
     public class ProductRepository : IProductRepository
     {
-        private  List<Product> Products;
-        public ProductRepository() { }
+        private  List<Product> _poducts;
+        
         public ProductRepository(List<Product> products)
         {
-            Products = products;
+            _poducts = products;
         }
         public void Add(Product Product)
         {
@@ -20,47 +20,48 @@ namespace Projet_Gestion_Parfumerie.Models
             {
                 throw new ArgumentNullException();
             }
-            Products.Add(Product);
+            _poducts.Add(Product);
 
  
         }
 
-        public void AddPromo(int id, double promo)
+        public void AddPromo(Guid id, double promo)
         {
             var product = Get(id);
             if (product != null)
             {
-                product.Promo = promo;
-                product.Price = product.Price - (product.Price * promo);
+                product.PromoPrice = product.Price*(1-promo);    
             }
         }
-
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            foreach(var product in Products.ToList())
-            {
-                if(product.Id == id)
-                {
-                    Products.Remove(product);
-                }
-            }
+            _poducts.RemoveAll(x => x.Id.Equals(id));
            // var deleteProduct = Get(id);
             /*Products.Remove(deleteProduct);*/
         }
 
-        public Product Get(int id)
+        public Product? Get(Guid id)
         {
-            return Products.SingleOrDefault(p => p.Id == id);
+            return _poducts.SingleOrDefault(p => p.Id.Equals(id));
         }
 
         public List<Product> GetAllProducts()
         {
-            return Products.ToList() ;
+            return _poducts;
         }
 
         public void Update(Product Product)
         {
-            foreach (var product in Products)
+            // todo : refactor
+            var p = Get(Product.Id);
+            if (p != null)
+            {
+                p.Name = Product.Name;
+                p.Price = Product.Price;
+                p.Brand = Product.Brand;
+            }
+
+           /* foreach (var product in _poducts)
             {
                 if (product.Id == Product.Id)
                 {
@@ -68,7 +69,7 @@ namespace Projet_Gestion_Parfumerie.Models
                     product.Price = Product.Price;
                     product.Brand = Product.Brand;
                 }
-            }
+            }*/
         }
     }
 }

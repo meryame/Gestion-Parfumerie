@@ -1,5 +1,6 @@
 using Projet_Gestion_Parfumerie.Models;
 using Projet_Gestion_Parfumerie.Services;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -7,21 +8,24 @@ using Xunit;
 
 namespace TestProject
 {
-    public class ProjetTest
+    public class ProjetTest 
     {
-        private ProductRepository productRepository;
-        private BrandRepository brandRepository;
+        private IProductRepository productRepository;
+        private IBrandRepository brandRepository;
         private List<Product> products = new List<Product>();
         private List<Brand> brands = new List<Brand>();
         private Service service;
         [Fact]
         public void TestToAddProduct()
         {
-            productRepository = new ProductRepository(products);
-            brandRepository = new BrandRepository(brands);
+         productRepository = new ProductRepository(products);
+         brandRepository = new BrandRepository(brands);   
             service = new Service(productRepository, brandRepository);
+            
+            Guid id = Guid.NewGuid();
             var product = new Product
             {
+                Id = id,
                 Name = "product1",
                 Price = 200,
                 Brand = new Brand
@@ -40,8 +44,11 @@ namespace TestProject
         public void TestToGetProduct()
         {
             productRepository = new ProductRepository(products);
+            
+            Guid id = Guid.NewGuid();
             var product = new Product
             {
+                Id = id,
                 Name = "product2",
                 Price = 300
             };
@@ -56,9 +63,11 @@ namespace TestProject
         [Fact]
         public void TestToDeleteProduct()
         {
-            var productRepository = new ProductRepository(products);
+            productRepository = new ProductRepository(products);
+            Guid id = Guid.NewGuid();
             var product = new Product
             {
+                Id = id,
                 Name = "prod1",
                 Price = 100
             };
@@ -72,12 +81,14 @@ namespace TestProject
         [Fact]
         public void TestToUpdateProduct()
         {
-
             productRepository = new ProductRepository(products);
             brandRepository = new BrandRepository(brands);
             service = new Service(productRepository, brandRepository);
+            Guid id = Guid.NewGuid();
+
             var product = new Product
             {
+                Id = id,
                 Name = "product1",
                 Price = 200,
                 Brand = new Brand
@@ -88,6 +99,7 @@ namespace TestProject
             productRepository.Add(product);
             var productMdf = new Product
             {
+                Id = id,
                 Name = "prod1",
                 Price = 200,
                 Brand = new Brand
@@ -96,7 +108,7 @@ namespace TestProject
                 }
             };
             service.UpdateProduct(productMdf);
-            Assert.Contains(products, p => p.Name == productMdf.Name);
+            Assert.Contains(products, p => p.Name.Equals(productMdf.Name));
 
 
 
@@ -105,9 +117,10 @@ namespace TestProject
         public void TestToAddPromoForPrice()
         {
             productRepository = new ProductRepository(products);
-
+            Guid id = Guid.NewGuid();
             var product = new Product
             {
+                Id = id,
                 Name = "pro1",
                 Price = 200
             };
@@ -115,15 +128,18 @@ namespace TestProject
             productRepository.AddPromo(product.Id,0.4);
 
             var expected = 120;
-            Assert.Equal(expected, product.Promo);
+            Assert.Equal(expected,product.PromoPrice);
         }
 
         [Fact]
         public void TestToGetAllProducts()
         {
             productRepository = new ProductRepository(products);
+           
+            Guid id = Guid.NewGuid();
             var product1 = new Product
             {
+                Id = id,
                 Name = "prod1",
                 Price = 200,
                 Brand = new Brand
@@ -134,6 +150,7 @@ namespace TestProject
             productRepository.Add(product1);
             var product2 = new Product
             {
+                Id = id,
                 Name = "prod2",
                 Price = 200,
                 Brand = new Brand

@@ -8,19 +8,18 @@ namespace Projet_Gestion_Parfumerie.Models
 {
     public class Brand
     {
-        public int Id { get; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public List<Product> Products { get; set; }
         public static int NbBrand;
         public Brand() 
         {
-            NbBrand++;
-            this.Id = NbBrand;
+           
         }
-        public Brand(string name,List<Product> products)
+        public Brand(Guid id,string name,List<Product> products)
         {
-            NbBrand++;
-            this.Id = NbBrand;
+          
+            this.Id = id;
             this.Name = name;
             Products = products;
         }

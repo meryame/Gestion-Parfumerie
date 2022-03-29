@@ -8,30 +8,30 @@ namespace Projet_Gestion_Parfumerie.Models
 {
     public class BrandRepository : IBrandRepository
     {
-       private List<Brand> Brands;
-        public BrandRepository() { }
+       private List<Brand> _brands;
+        
         public BrandRepository(List<Brand> brands)
         {
-            this.Brands = brands;
+            this._brands = brands;
         }
         public void AddBrand(Brand brand)
         {
-            Brands.Add(brand);
+            _brands.Add(brand);
         }
 
         public List<Brand> GetAllBrands()
         {
-           return Brands;
+           return _brands;
         }
 
-        public Brand GetBrandById(int id)
+        public Brand GetBrandById(Guid id)
         {
-            return Brands.Single(b => b.Id == id);
+            return _brands.Single(b => b.Id.Equals(id));
         }
 
         public Brand GetBrandByName(string name)
         {
-            return Brands.Single(b => b.Name == name);
+            return _brands.Single(b => b.Name == name);
         }
     }
 }

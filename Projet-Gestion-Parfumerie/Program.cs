@@ -22,7 +22,8 @@ class Program
     public static Service service = new Service(productRepository, brandRepository);
    public static Product product = new Product
     {
-        Name = "prod1",
+       Id = Guid.NewGuid(),
+       Name = "prod1",
         Price = 200,
         Brand = new Brand
         {
@@ -31,6 +32,7 @@ class Program
     };
     public static Product product2 = new Product
     {
+        Id = Guid.NewGuid(),
         Name = "prod2",
         Price = 100,
         Brand = new Brand
@@ -40,6 +42,7 @@ class Program
     };
     public static Product product3 = new Product
     {
+        Id = Guid.NewGuid(),
         Name = "prod3",
         Price = 150,
         Brand = new Brand
@@ -156,7 +159,7 @@ class Program
             Console.WriteLine(p.ToString());
         }
         Console.ReadLine();
-        Console.WriteLine(service.GetProduct(2).ToString()) ;
+        Console.WriteLine(service.GetProduct(Guid.NewGuid()).ToString()) ;
         Console.ReadLine();
         Console.WriteLine("product trouvee");
         Console.ReadLine();
@@ -169,7 +172,7 @@ class Program
         }
         Console.ReadLine();
 
-        service.AddPromoProduct(1, 0.4);
+        service.AddPromoProduct(Guid.NewGuid(), 0.4);
         foreach (Product p in products)
         {
             Console.WriteLine(p.ToString());
