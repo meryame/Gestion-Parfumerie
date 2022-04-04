@@ -10,17 +10,17 @@ namespace TestProject
 {
     public class ProjetTest 
     {
-        private IProductRepository productRepository;
-        private IBrandRepository brandRepository;
-        private List<Product> products = new List<Product>();
-        private List<Brand> brands = new List<Brand>();
-        private Service service;
+        private IProductRepository? ProductRepository;
+        private IBrandRepository? BrandRepository;
+        private readonly List<Product> Products = new();
+        private readonly List<Brand> Brands = new();
+        private Service? Service;
         [Fact]
         public void TestToAddProduct()
         {
-         productRepository = new ProductRepository(products);
-         brandRepository = new BrandRepository(brands);   
-            service = new Service(productRepository, brandRepository);
+         ProductRepository = new ProductRepository(Products);
+         BrandRepository = new BrandRepository(Brands);   
+         Service = new Service(ProductRepository, BrandRepository);
             
             Guid id = Guid.NewGuid();
             var product = new Product
@@ -33,17 +33,17 @@ namespace TestProject
                     Name = "brand1"
                 }
             };
-            service.AddProduct(product);
-            Assert.NotEmpty(products);
-            Assert.NotEmpty(brands);
-            Assert.Contains(brands, b => b.Id == product.Brand.Id);
-            Assert.Contains(products, p => p.Id == product.Id);
+            Service.AddProduct(product);
+            Assert.NotEmpty(Products);
+            Assert.NotEmpty(Brands);
+            Assert.Contains(Brands, b => b.Id == product.Brand.Id);
+            Assert.Contains(Products, p => p.Id == product.Id);
         }
         
         [Fact]
         public void TestToGetProduct()
         {
-            productRepository = new ProductRepository(products);
+            ProductRepository = new ProductRepository(Products);
             
             Guid id = Guid.NewGuid();
             var product = new Product
@@ -52,18 +52,18 @@ namespace TestProject
                 Name = "product2",
                 Price = 300
             };
-            productRepository.Add(product);
-            var testProduct = productRepository.Get(product.Id);
+            ProductRepository.Add(product);
+            var testProduct = ProductRepository.Get(product.Id);
 
             Assert.NotNull(testProduct);
             Assert.Equal(product, testProduct);
-            Assert.Contains(products, p=>p.Id == testProduct.Id);
+            Assert.Contains(Products, p=>p.Id == testProduct.Id);
             
         }
         [Fact]
         public void TestToDeleteProduct()
         {
-            productRepository = new ProductRepository(products);
+            ProductRepository = new ProductRepository(Products);
             Guid id = Guid.NewGuid();
             var product = new Product
             {
@@ -71,19 +71,19 @@ namespace TestProject
                 Name = "prod1",
                 Price = 100
             };
-            productRepository.Add(product);
-            productRepository.Delete(product.Id);
+            ProductRepository.Add(product);
+            ProductRepository.Delete(product.Id);
             
 
-            Assert.DoesNotContain(products, p => p.Id == product.Id);
+            Assert.DoesNotContain(Products, p => p.Id == product.Id);
         }
 
         [Fact]
         public void TestToUpdateProduct()
         {
-            productRepository = new ProductRepository(products);
-            brandRepository = new BrandRepository(brands);
-            service = new Service(productRepository, brandRepository);
+            ProductRepository = new ProductRepository(Products);
+            BrandRepository = new BrandRepository(Brands);
+            Service = new Service(ProductRepository, BrandRepository);
             Guid id = Guid.NewGuid();
 
             var product = new Product
@@ -96,7 +96,7 @@ namespace TestProject
                     Name = "brand1"
                 }
             };
-            productRepository.Add(product);
+            ProductRepository.Add(product);
             var productMdf = new Product
             {
                 Id = id,
@@ -107,8 +107,8 @@ namespace TestProject
                     Name = "brand1"
                 }
             };
-            service.UpdateProduct(productMdf);
-            Assert.Contains(products, p => p.Name.Equals(productMdf.Name));
+            Service.UpdateProduct(productMdf);
+            Assert.Contains(Products, p => p.Name.Equals(productMdf.Name));
 
 
 
@@ -116,7 +116,7 @@ namespace TestProject
         [Fact]
         public void TestToAddPromoForPrice()
         {
-            productRepository = new ProductRepository(products);
+            ProductRepository = new ProductRepository(Products);
             Guid id = Guid.NewGuid();
             var product = new Product
             {
@@ -124,8 +124,8 @@ namespace TestProject
                 Name = "pro1",
                 Price = 200
             };
-            productRepository.Add(product);
-            productRepository.AddPromo(product.Id,0.4);
+            ProductRepository.Add(product);
+            ProductRepository.AddPromo(product.Id,0.4);
 
             var expected = 120;
             Assert.Equal(expected,product.PromoPrice);
@@ -134,7 +134,7 @@ namespace TestProject
         [Fact]
         public void TestToGetAllProducts()
         {
-            productRepository = new ProductRepository(products);
+            ProductRepository = new ProductRepository(Products);
            
             Guid id = Guid.NewGuid();
             var product1 = new Product
@@ -147,7 +147,7 @@ namespace TestProject
                     Name = "brand1"
                 }
             };
-            productRepository.Add(product1);
+            ProductRepository.Add(product1);
             var product2 = new Product
             {
                 Id = id,
@@ -158,8 +158,8 @@ namespace TestProject
                     Name = "brand1"
                 }
             };
-            productRepository.Add(product2);
-            var expected = productRepository.GetAllProducts();
+            ProductRepository.Add(product2);
+            var expected = ProductRepository.GetAllProducts();
 
             Assert.Contains(expected, p=>p.Id == product1.Id);
             Assert.Contains(expected, p => p.Id == product2.Id);

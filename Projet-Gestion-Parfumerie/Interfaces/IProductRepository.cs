@@ -8,9 +8,9 @@ namespace Projet_Gestion_Parfumerie.Models
 {
     public interface IProductRepository
     {
-        public void Add(Product Product);
-        public void Update(Product Product);
-        public void Delete(Guid id);
+        public bool Add(Product Product);
+        public bool Update(Product Product);
+        public bool Delete(Guid id);
         public Product? Get(Guid id);
         public List<Product> GetAllProducts();
         public void AddPromo(Guid id, double promo);

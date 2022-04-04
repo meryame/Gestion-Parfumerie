@@ -13,20 +13,16 @@ namespace Projet_Gestion_Parfumerie.Models
         public double Price { get; set; }
         public Brand Brand { get; set; }
         public double PromoPrice { get; set; }
-        public Product() 
+        public Product()
         {
-            
+
         }
         public Product(Guid id, string name,double price,Brand brand)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Price = price;
-            this.Brand = brand;
-        }
-        public override string ToString()
-        {
-           return $"{Id}{Name}{Price}{Brand}";
+            Id = id;
+            Name = name;
+            Price = price;
+            Brand = brand;
         }
     }
 }

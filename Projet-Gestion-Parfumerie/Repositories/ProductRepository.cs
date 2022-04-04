@@ -14,15 +14,17 @@ namespace Projet_Gestion_Parfumerie.Models
         {
             _poducts = products;
         }
-        public void Add(Product Product)
+        public bool Add(Product Product)
         {
-            if(Product == null)
+            if (Product == null)
             {
                 throw new ArgumentNullException();
             }
-            _poducts.Add(Product);
-
- 
+            else
+            {
+                _poducts.Add(Product);
+            }
+             return true;
         }
 
         public void AddPromo(Guid id, double promo)
@@ -33,11 +35,15 @@ namespace Projet_Gestion_Parfumerie.Models
                 product.PromoPrice = product.Price*(1-promo);    
             }
         }
-        public void Delete(Guid id)
+        public bool Delete(Guid id)
         {
-            _poducts.RemoveAll(x => x.Id.Equals(id));
-           // var deleteProduct = Get(id);
-            /*Products.Remove(deleteProduct);*/
+
+            var deleteProduct = Get(id);
+            if (deleteProduct != null)
+            {
+                _poducts.Remove(deleteProduct);
+            }
+            return true;
         }
 
         public Product? Get(Guid id)
@@ -50,26 +56,17 @@ namespace Projet_Gestion_Parfumerie.Models
             return _poducts;
         }
 
-        public void Update(Product Product)
+        public bool Update(Product Product)
         {
             // todo : refactor
-            var p = Get(Product.Id);
-            if (p != null)
+            var ModifiedProduct = Get(Product.Id);
+            if (ModifiedProduct != null)
             {
-                p.Name = Product.Name;
-                p.Price = Product.Price;
-                p.Brand = Product.Brand;
+                ModifiedProduct.Name = Product.Name;
+                ModifiedProduct.Price = Product.Price;
+                ModifiedProduct.Brand = Product.Brand;
             }
-
-           /* foreach (var product in _poducts)
-            {
-                if (product.Id == Product.Id)
-                {
-                    product.Name = Product.Name;
-                    product.Price = Product.Price;
-                    product.Brand = Product.Brand;
-                }
-            }*/
+            return true;
         }
     }
 }
