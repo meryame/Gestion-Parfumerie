@@ -9,16 +9,10 @@ namespace Projet_Gestion_Parfumerie.Models
     public class BrandRepository : IBrandRepository
     {
        private List<Brand> _brands;
-        
-        public BrandRepository(List<Brand> brands)
-        {
-            this._brands = brands;
-        }
         public void AddBrand(Brand brand)
         {
             _brands.Add(brand);
         }
-
         public List<Brand> GetAllBrands()
         {
            return _brands;

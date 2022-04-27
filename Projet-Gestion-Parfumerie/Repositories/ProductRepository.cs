@@ -14,7 +14,7 @@ namespace Projet_Gestion_Parfumerie.Models
         {
             _poducts = products;
         }
-        public bool Add(Product Product)
+        public void Add(Product Product)
         {
             if (Product == null)
             {
@@ -24,7 +24,7 @@ namespace Projet_Gestion_Parfumerie.Models
             {
                 _poducts.Add(Product);
             }
-             return true;
+             
         }
 
         public void AddPromo(Guid id, double promo)
@@ -35,7 +35,7 @@ namespace Projet_Gestion_Parfumerie.Models
                 product.PromoPrice = product.Price*(1-promo);    
             }
         }
-        public bool Delete(Guid id)
+        public void Delete(Guid id)
         {
 
             var deleteProduct = Get(id);
@@ -43,7 +43,7 @@ namespace Projet_Gestion_Parfumerie.Models
             {
                 _poducts.Remove(deleteProduct);
             }
-            return true;
+            
         }
 
         public Product? Get(Guid id)
@@ -54,19 +54,6 @@ namespace Projet_Gestion_Parfumerie.Models
         public List<Product> GetAllProducts()
         {
             return _poducts;
-        }
-
-        public bool Update(Product Product)
-        {
-            // todo : refactor
-            var ModifiedProduct = Get(Product.Id);
-            if (ModifiedProduct != null)
-            {
-                ModifiedProduct.Name = Product.Name;
-                ModifiedProduct.Price = Product.Price;
-                ModifiedProduct.Brand = Product.Brand;
-            }
-            return true;
         }
     }
 }
