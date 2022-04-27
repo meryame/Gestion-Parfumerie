@@ -31,7 +31,7 @@ namespace Projet_Gestion_Parfumerie.Services
 
         }
 
-        public Product GetProduct(int id)
+        public Product? GetProduct(Guid id)
         {
             return _productRepository.Get(id);
         }
@@ -52,7 +52,7 @@ namespace Projet_Gestion_Parfumerie.Services
             _productRepository.Update(product);
 
         }
-       public void AddPromoProduct(int id,double promo)
+       public void AddPromoProduct(Guid id,double promo)
         {
             _productRepository.AddPromo(id,promo);
         }
