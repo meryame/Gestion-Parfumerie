@@ -44,13 +44,6 @@ namespace Projet_Gestion_Parfumerie.Services
             {
                 brandRemove.Products.Remove(product);
             }
-
-
-        }
-        public void UpdateProduct(Product product)
-        {
-            _productRepository.Update(product);
-
         }
        public void AddPromoProduct(Guid id,double promo)
         {
