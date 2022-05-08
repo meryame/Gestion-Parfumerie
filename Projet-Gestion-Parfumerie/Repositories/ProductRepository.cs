@@ -20,13 +20,8 @@ namespace Projet_Gestion_Parfumerie.Models
             {
                 throw new ArgumentNullException();
             }
-            else
-            {
-                _poducts.Add(Product);
-            }
-             
+            _poducts.Add(Product);
         }
-
         public void AddPromo(Guid id, double promo)
         {
             var product = Get(id);
@@ -51,9 +46,6 @@ namespace Projet_Gestion_Parfumerie.Models
             return _poducts.SingleOrDefault(p => p.Id.Equals(id));
         }
 
-        public List<Product> GetAllProducts()
-        {
-            return _poducts;
-        }
+        public List<Product> GetAllProducts() => _poducts;
     }
 }

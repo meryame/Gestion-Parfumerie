@@ -17,9 +17,6 @@ namespace Projet_Gestion_Parfumerie.Services
             _productRepository = productRepository;
             _brandRepository = brandRepository;
         }
-
-        
-
         public void AddProduct(Product product)
         {
             _productRepository.Add(product);
