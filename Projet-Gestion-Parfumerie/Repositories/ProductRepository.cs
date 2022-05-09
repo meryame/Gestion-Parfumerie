@@ -22,6 +22,7 @@ namespace Projet_Gestion_Parfumerie.Models
             }
             _poducts.Add(Product);
         }
+
         public void AddPromo(Guid id, double promo)
         {
             var product = Get(id);
