@@ -42,10 +42,9 @@ namespace Projet_Gestion_Parfumerie.Models
             
         }
 
-        public Product? Get(Guid id)
-        {
-            return _poducts.SingleOrDefault(p => p.Id.Equals(id));
-        }
+        public Product? Get(Guid id) => _poducts.SingleOrDefault(p => p.Id.Equals(id));
+          
+        
 
         public List<Product> GetAllProducts() => _poducts;
     }
